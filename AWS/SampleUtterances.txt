@@ -1,0 +1,27 @@
+LEDIntent to turn the LED in the {ROOMselection} {LEDMessage}
+LEDIntent to {LEDMessage} the LEDs
+LEDIntent to {LEDMessage} the LED in the {ROOMselection}
+LEDIntent to make the LEDs {LEDMessage}
+LEDIntent to switch {LEDMessage} the LEDs
+LEDIntent to turn the LEDs {LEDMessage}
+LEDIntent to turn {LEDMessage} the lights
+LEDIntent to turn the LED {LEDMessage} in the {ROOMselection}
+LEDIntent to turn {LEDMessage} the LED in the {ROOMselection}
+LEDIntent to turn {LEDMessage} the {ROOMselection} LED
+LEDIntent to switch the LED {LEDMessage} in the {ROOMselection}
+LEDIntent to switch {LEDMessage} the LED in the {ROOMselection}
+LEDIntent to switch {LEDMessage} the {ROOMselection} LED
+LEDIntent to make the {ROOMselection} LED {LEDMessage}
+TempIntent what's the temperature in the {ROOMselection} now
+TempIntent the {ROOMselection} temperature
+TempIntent what's the temperature in the {ROOMselection}
+TempIntent to tell me the {ROOMselection} temperature
+TempIntent to measure the {ROOMselection} temperature
+TempIntent the temperature in the {ROOMselection}
+TempIntent to read the temperature
+TempIntent what's the temperature
+TempIntent to tell me the temperature
+TempIntent the temperature
+RoomIntent in the {ROOMselection}
+RoomIntent the {ROOMselection}
+RoomIntent {ROOMselection}

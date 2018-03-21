@@ -1,0 +1,12 @@
+{
+  "desired": {
+    "LEDstate": 0,
+    "Temp": 0,
+    "ConnState": 0
+  },
+  "reported": {
+    "LEDstate": 0,
+    "Temp": 0,
+    "ConnState": 0
+  }
+}
