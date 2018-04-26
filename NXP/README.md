@@ -87,7 +87,7 @@ Before running the demo it is need to configure AWS IoT Console and update some 
 	- "readwifi" Read the WIFI parameters
 	- "writewifi" Write the WIFI parameters in Flash, after every writewifi commands the board needs a HW reset for update the application parameters.
 
-Prepare the Android application
+Prepare the Android application (only if interested)
 ===============================
 
 COGNITO
