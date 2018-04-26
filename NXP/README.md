@@ -94,42 +94,27 @@ COGNITO
 
 Cognito configuration will allow your Android application to communicate with your thing. Steps are described in the project under ../doc/readme.txt.
 
- 
-
 Prepare the Android application
 
 The Android application requires Cognito service to authorize to AWS IoT in order to access device shadows. Use Amazon Cognito to create a new identity pool:
 
- 
-
 1.  In the Amazon Cognito Console https://console.aws.amazon.com/cognito/ select "Manage Federated Identities" and "Create new identity pool".
-
- 
 
 2.  Ensure Enable access to unauthenticated identities is checked. This allows the sample application to assume the unauthenticated role associated with this identity pool.
 
     Note: to keep this example simple it makes use of unauthenticated users in the identity pool. This can be used for getting started and prototypes but unauthenticated users should typically only be given read-only permissions in production applications. More information on Cognito identity pools including the Cognito developer guide can be found here: http://aws.amazon.com/cognito/.
 
- 
-
- 
-
- 
-
- 
+![:scale 400px](assets/1.jpg)
+![:scale 400px](assets/2.jpg)
 
 3.  To obtain the Pool ID constant, select "Edit identity pool" and copy Identity pool ID (it will look like <REGION>:<ID>). This Identity pool ID (<COGNITO POOL ID>) will be used in the application (policy and configuration file).
 
- 
-
- 
+![:scale 400px](assets/3.jpg)
 
 4.  To obtain Account ID, select account name in webpage menu bar and select "My account" from drop down menu. Make note of "Account ID" under "Account Settings".
 
 5. As part of creating the identity pool Cognito will setup two roles in Identity and Access Management (IAM) https://console.aws.amazon.com/iam/home#roles . These will be named something similar to: "Cognito_PoolNameAuth_Role" and "Cognito_PoolNameUnauth_Role".
 Create policy to be attached into "Cognito_PoolNameUnauth_Role" though "Policies" menu, selecting "Create policy", "Create Your Own Policy" and copying example policy below into "Policy Document" field and naming it for example "<THING NAME>Policy". Replace <REGION>, <ACCOUNT ID> and <THING NAME> with your respective values. This policy allows the application to get and update the two thing shadows used in this sample.
-
- 
 
     {
         "Version": "2012-10-17",
@@ -168,49 +153,33 @@ Create policy to be attached into "Cognito_PoolNameUnauth_Role" though "Policies
 
 (select unauth Role)
 
- 
+![:scale 400px](assets/6.jpg)
 
 (add policy... this can be done through Policies -> Create policy  or  directly adding an Inline Policy as shown below)
 
- 
-
- 
+![:scale 400px](assets/7.jpg)
 
 (configure policy)
 
- 
+![:scale 400px](assets/8.jpg) 
 
 (set a name to the policy)
 
- 
-
- 
+![:scale 400px](assets/9.jpg)
 
 6.  Newly created policy now needs to be attached to the unauthenticated role which has permissions to access the required AWS IoT APIs by opening "Cognito_PoolNameUnauth_Role" under "Roles" menu. Then in "Permissions" tab select "Attach policy" to view list of all AWS policies where example's policy "<THING NAME>Policy" needs to be selected though checking its checkbox and clicking on "Attach policy" button.
 
 (step not required if policy was added as inline policy)
 
- 
-
     More information on AWS IAM roles and policies can be found here: http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage.html
 
     More information on AWS IoT policies can be found here: http://docs.aws.amazon.com/iot/latest/developerguide/authorization.html
-
- 
-
- 
 
 Locate the AwsLedWifi.apk and AwsLedWifiPreferences.properties files in the SDK from MCUXpresso:
 
 ...\SDK_2.3.0_LPC54018\boards\lpc54018iotmodule\aws_examples\led_wifi_android
 
- 
-
- 
-
 7. Prepare "AwsLedWifiPreferences.properties" file with yours AWS credentials. It's structure looks like this:
-
- 
 
     customer_specific_endpoint=<REST API ENDPOINT>
 
@@ -220,21 +189,15 @@ Locate the AwsLedWifi.apk and AwsLedWifiPreferences.properties files in the SDK 
 
     region=<REGION>
 
- 
-
-cid:image001.png@01D3DBEE.0BD3B6C0
+![:scale 400px](assets/8.png)
 
 Fill AwsLedWifiPreferences.properties with your thing & account information
 
- 
+![:scale 400px](assets/9.jpg)
 
 Locate the REST API Endpoint of your thing under Thing -> Interact
 
- 
-
 Then move properties file into your Android device (application will ask for properties file though file browser dialog during first run).
-
- 
 
 - Connect your Android device to your PC and select to support "File Transfer" instead of just charging, this is done in the android device.
 
@@ -242,27 +205,21 @@ Then move properties file into your Android device (application will ask for pro
 
   - Drag & drop AwsLedWifi.apk to a known location
 
- 
-
 8. To run Android application do either:
 
     a) install and run pre-build apk on Android device (<SDK_Repository>\<board_name>\src\aws_examples\led_wifi_android\AwsLedWifi.apk)
 
     Use a File manager application, browse in your Android device to the location where you dropped the AwsLedWifi.apk file and install it
 
-   
-
     b) open project in Android Studio, build it, attach Android device and Run application
 
     Application requires at least Android version 5.1 (Android SDK 22).
 
- 
-
     In any case, when asked, select AwsLedWifiPreferences.properties file with AWS IoT preferences. Then application will establish MQTT connection to AWS server, download last state of thing's shadow and will be ready for user input.
 
- 
-
 When you run the application for the first time, it will ask for a properties file... browse to the dropped file (AwsLedWifiPreferences.properties) and select it.
+
+![:scale 400px](assets/10.jpg)
 
 Running the demo
 ================
