@@ -1,41 +1,123 @@
 {
-  "intents": [
-    {
-      "intent": "AMAZON.CancelIntent"
-    },
-    {
-      "intent": "AMAZON.HelpIntent"
-    },
-    {
-      "slots": [
-        {
-          "name": "LEDMessage",
-          "type": "LED_LIST"
-        },
-        {
-          "name": "ROOMselection",
-          "type": "ROOM_LIST"
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "my home",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "LEDIntent",
+                    "slots": [
+                        {
+                            "name": "LEDMessage",
+                            "type": "LED_LIST"
+                        },
+                        {
+                            "name": "ROOMselection",
+                            "type": "ROOM_LIST"
+                        }
+                    ],
+                    "samples": [
+                        "to turn {LEDMessage} the LED in {ROOMselection} the rooms",
+                        "to turn {LEDMessage} the LED in {ROOMselection} the kitchen and the bedroom",
+                        "to turn {LEDMessage} the LED in {ROOMselection} the kitchen and the bedroom",
+                        "to turn the LED in the {ROOMselection} {LEDMessage}",
+                        "to {LEDMessage} the LEDs",
+                        "to {LEDMessage} the LED in the {ROOMselection}",
+                        "to make the LEDs {LEDMessage}",
+                        "to switch {LEDMessage} the LEDs",
+                        "to turn the LEDs {LEDMessage}",
+                        "to turn {LEDMessage} the lights",
+                        "to turn the LED {LEDMessage} in the {ROOMselection}",
+                        "to turn {LEDMessage} the LED in the {ROOMselection}",
+                        "to turn {LEDMessage} the {ROOMselection} LED",
+                        "to switch the LED {LEDMessage} in the {ROOMselection}",
+                        "to switch {LEDMessage} the LED in the {ROOMselection}",
+                        "to switch {LEDMessage} the {ROOMselection} LED",
+                        "to make the {ROOMselection} LED {LEDMessage}"
+                    ]
+                },
+                {
+                    "name": "TempIntent",
+                    "slots": [
+                        {
+                            "name": "ROOMselection",
+                            "type": "ROOM_LIST"
+                        }
+                    ],
+                    "samples": [
+                        "what's the temperature in the {ROOMselection} now",
+                        "the {ROOMselection} temperature",
+                        "what's the temperature in {ROOMselection} the rooms",
+                        "what's the temperature in {ROOMselection} the kitchen and the bedroom",
+                        "what's the temperature in the {ROOMselection}",
+                        "to tell me the {ROOMselection} temperature",
+                        "to measure the {ROOMselection} temperature",
+                        "the temperature in the {ROOMselection}",
+                        "to read the temperature",
+                        "what's the temperature",
+                        "to tell me the temperature",
+                        "the temperature"
+                    ]
+                },
+                {
+                    "name": "RoomIntent",
+                    "slots": [
+                        {
+                            "name": "ROOMselection",
+                            "type": "ROOM_LIST"
+                        }
+                    ],
+                    "samples": [
+                        "in the {ROOMselection}",
+                        "the {ROOMselection}",
+                        "{ROOMselection}"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "LED_LIST",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "on"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "off"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ROOM_LIST",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "kitchen"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "bedroom"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "both"
+                            }
+                        }
+                    ]
+                }
+            ]
         }
-      ],
-      "intent": "LEDIntent"
-    },
-    {
-      "slots": [
-        {
-          "name": "ROOMselection",
-          "type": "ROOM_LIST"
-        }
-      ],
-      "intent": "TempIntent"
-    },
-    {
-      "slots": [
-        {
-          "name": "ROOMselection",
-          "type": "ROOM_LIST"
-        }
-      ],
-      "intent": "RoomIntent"
     }
-  ]
 }
