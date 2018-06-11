@@ -125,102 +125,79 @@ Our Lambda function will now on have the authorization to access and interact wi
 
 ### Create an Alexa skill and link it to the AWS Lambda function
 
-In this section we are going to set an Alexa Skill, but what's a skill? Basically it's a set of expressions and utterances which we want Alexa to be able to recognize.  
-By setting a new skill we will be able to interact with Alexa and trigger our Lambda function by saying those specific expressions to our Echo device.  
-Follow the steps below to create and configure a new Alexa skill.  
+In this section we are going to set an Alexa Skill, but what's a skill? It's a set of expressions and utterances which we want Alexa to be able to recognize.
+By setting a new skill, we will be able to interact with Alexa and trigger our Lambda function by saying those specific expressions to our Echo device.
+Follow the steps below to create and configure a new Alexa skill.
 
-Enter the Amazon developer console (https://developer.amazon.com/) in a new browser window with your credentials for the Amazon Developer Services and enter the Alexa tab (top bar menu).  
-You will now see two accessible resources:
- - the Alexa Skills Kit (ASK)
- - the Alexa Voice Service (AVS)
+Enter the Amazon developer console (https://developer.amazon.com/) in a new browser window with your credentials for the Amazon Developer Services and enter the Alexa tab (top bar menu).
+You will now see five available resources:
+ - amazon alexa
+ - amazon appstore
+ - amazon web services
+ - desktop apps & games
+ - dash services
 
-Choose the Alexa Skill Kit since we want to build a new interacting skill in our Alexa Service: click on Alexa Skill Kit "*Get Started >*".  
+Choose amazon alexa.
 
-On the top right click on "*Add a New Skill*" to create a new skill.
-Here is where we are going to configure our Alexa services to interact with the AWS-Lambda Function.  
+![:scale 350px](assets/amazonAlexa.png)
 
-Follow the steps below if you're using the **Alexa Skill kit console**.  
-If you're using the Beta Console switch to the other console by selecting *Skill* under the *Your Alexa Console* at the top right (see picture below).  
+Click on Alexa Skills Kit --> Get Started --> Alexa Skill Kit
 
-![:scale 350px](assets/switchConsole.png)
+![:scale 350px](assets/alexaSkillKit.png)
 
-On the left panel you will see all the steps we need to go through to create our Alexa Skill: *Skill Information*, *Interaction Model*, *Configuration*, ...  
+To build a new interacting skill in our Alexa Service click **Start a Skill**.On the top right click on "**Create Skill**" to create a new skill.
+Here is where we are going to configure our Alexa services to interact with the AWS-Lambda Function.
 
-![:scale 350px](assets/alexaskill.png)
+Set a name to your Skill, for example, "**LED and temperature**" then click **Next**
 
-Enter the "**Skill Information**" section and set the following:  
+Select the **Custom** model to add to your skill, then click on **Create Skill**
 
- - *Skill Type*: Custom Interaction Model  
- - *Language*: English U.S  
- - *Name*: Your Skill's Name (for example "LED and temperature")  
- - *Invocation Name*: Your Skill Invocation's Name (for example "myhome")  
+![:scale 350px](assets/customSkill.png)
 
-The *Invocation Name* is the name we need to invoke to activate this particular skill we're creating.
-So if we want to activate the "*LED and temperature*" skill when interacting with our Echo device we will  have to say "*Alexa, ask my home to blablabla...*".
-In the future, if you don't remember the invocation name or if you want to change it you can navigate to the Alexa Skill Kit on your Developer portal and check it out again.  
+We are now in the "**Interaction Model**" section. On the right panel, you will see a checklist we need to go through to create our Alexa Skill: *Invocation Name*, *Intents, Samples, and Slots*, *Build Model*, ...
 
-You are now ready to save the *Skill Information* by clicking on "*Save*" at the bottom left. Go on by clicking on "*Next*" at the bottom right.
-You will notice that the previous section's flag on the left-side menu has turned green, since the section is completed.  
+At the left side menu, select Invocation. Enter your skill Invocation's Name (for example, "*my home*"). The *Invocation Name* is the name we need to invoke to activate this particular skill we're creating.
+So if we want to activate the "*LED and temperature*" skill when interacting with our Echo device we will have to say "*Alexa, ask my home to blablabla...*".
+In the future, if you don't remember the invocation name or if you want to change it you can navigate to the Alexa Skill Kit on your Developer portal and check it out again.
 
-We are now in the "**Interaction Model**" section.  
+This way we will be able to choose the NXP IoT Module we want to select and make it perform some particular action we want it to show.
 
-First of all we are setting the *Intent Scheme*. Paste the *IntentScheme.json* code you find in git in the *Intent Scheme* editable window.  
+![:scale 350px](assets/invocationName.png)
 
-In this JSON we list the intents we will be able to call by saying some predefined expressions which we state later in the *Sample Utterances* editable window below.
-The intents starting with *AMAZON...* are default intents for the Alexa Skill, which allow the Alexa Service to perform default actions (like stopping, entering the user help or others..).  
-The intent we are creating here is the "*LEDIntent*" which represents the name of the request that our Alexa Skill will send to the Lambda Function when we want to turn on/off the LED of the NXP IoT Module.  
-The "*TempIntent*" is the name of the request that the Alexa Skill will send to the Lambda Function when we want to know which is the temperature measured by the NXP IoT Module.  
+Click on the **JSON Editor** located at the left menu. Then delete the default JSON data and copy-paste the content of **AlexaSkill.json** file.
+The JSON file is the translation of what you can manually add using the user-interface menu on the left.
+Notice that there is now a **LEDIntent** on your Intent’s list, and the invocation name is set to “myhome”. You can manually add or delete Intents for your application using the Graphical Interface or write it on the JSON Editor.
 
-We are now going to set a *Slot*.
-By setting a *slot* in our Intent Scheme we are able to interact further with the Alexa service and choose a specific message we would like to transmit to the Echo device.  
+![:scale 350px](assets/alexaJSON.png)
 
-In the *Custom Slot Types* enter a new *Type* called "LED_LIST" by clicking on "*Add Slot Type*"and then enter the following values in the editable window:  
-on  
-off  
+In this JSON we list the intents we will be able to call by saying some predefined expressions **Sample Utterances**.
+The intents starting with *AMAZON...* are default intents for the Alexa Skill, which allow the Alexa Service to perform default actions (like stopping, entering the user help or others..).
+The intent we are creating here is the "**LEDIntent**" which represents the name of the request that our Alexa Skill will send to the Lambda Function when we want to turn on/off the LED of the NXP IoT Module.
+The "*TempIntent*" is the name of the request that the Alexa Skill will send to the Lambda Function when we want to know which is the temperature measured by the NXP IoT Module.
+Navigate to the LEDIntent section and verify the different Utterances your Alexa will be able to recognize to manipulate the LED. Finally, click **Build Model**
 
-Add another Slot called "ROOM_LIST" and set the following values:  
-kitchen  
-bedroom  
-both  
+![:scale 350px](assets/LEDIntent.png)
 
-This way we will be able to choose the NXP IoT Module we want to choose and make it perform some particular action we want it to perform.  
-
-It's time now to set the expressions that we want to link to each intent defined above.
-We can do this by editing the *Sample Utterances* window line by line.  
-Each line should start with the name of the intent we want to invoke (LEDIntent or TempIntent or RoomIntent).
-Then we state the expression we want to use or we think the user might use to call that specific intent.  
-Copy paste the *SampleUtterances.txt* text under *Sample Utterances* editable field and feel free to add others.  
-The "SampleUtterances.txt" sets all the expressions Alexa will recognize: similar expressions will be recognized too! (AI power).  
-
-
-You can now click on "*Save*" at the bottom left and wait untill configuration ends.
-Then click on *Next* and move on to the "**Configuration**" section.  
-
-Here we set the *Endpoint* of the Alexa Service to be an AWS Lambda ARN (Amazon Resource Name) since we want our Alexa Skill to trigger a Lambda Function.  
-An editable line will appear: that's where we need to paste the ARN of the Lambda Function we want to link.  
-So navigate to AWS Lambda and access the *NXPModuleManager* function we created before (you should have the window opened still since before).  
+Click **Endpoint** select AWS Lambda ARN (Amazon Resource Name) since we want our Alexa Skill to trigger a Lambda Function.
+Ane editable line will appear: that's where we need to paste the ARN of the Lambda Function we want to link.
+So navigate to AWS Lambda and access the *NXPModuleManager* function we created before (you should have the window opened still since back).
 Find the ARN of the NXPModuleManager on the top right and copy it to your notes (the ARN will be something like "arn:aws:lambda:us-east[.....]NXPModuleManager").
-Then move back to the Alexa Skill Kit and paste it in the editable line.  
+Then move back to the Alexa Skill Kit and paste it into the editable line.
 
-Add the optional *Provide geographical region endpoints?* by flagging "yes" and choose *North America*.
-Again an editable line will appear: paste the same ARN as before.  
-
-Before going to edit the next section we need to provide our Lambda Function the Alexa Application ID to which it is going to be linked.
+Before going to edit the next section, we need to provide our Lambda Function the Alexa Application ID to which it is going to be linked.
 So, scroll up with your mouse and find the Alexa Skill ID (something like "amzn1.ask.skill[....]", right under the Skill name, below the top Menu).
-Copy the ID and move to the AWS Lambda console (https://aws.amazon.com/lambda/) and select the NXPModuleManager function.  
-On the left you will see the *Add Triggers* menu: select *Alexa Skill Kit* to add a trigger.  
-Below you can configure the trigger settings:  
+Copy the ID and move to the AWS Lambda console (https://aws.amazon.com/lambda/) and select the NXPModuleManager function.
+On the left, you will see the *Add Triggers* menu: select *Alexa Skill Kit* to add a trigger.
+Below you can configure the trigger settings:
  - Enable the Skill ID verification
  - Paste the Skill ID previously copied under the *Skill ID*
 
-Finally click on "*Add*" at the bottom right and then save the Lambda function ("*Save*" orange button at the top right).  
+Finally, click on "*Add*" at the bottom right and then save the Lambda function ("*Save*" orange button at the top right).
 
-Move back to the Alexa Skill Kit console again and:  
- - Click on *Save* at the bottom left  
- - Click on *Next* at the bottom right  
+Move back to the Alexa Skill Kit console again and:
+ - Click on **Save Endpoints** at the top left
+ - Click on CUSTOM to verify that all the Skill builder checklist complete successfully
 
-We have just created the Alexa Skill: we will be able to invoke it by saying "Alexa, ask *myHome* to *{sample utterance}*" to our Echo Device.  
-It's not time to test it already: we need to configure AWS IoT first!
 
 ### Create a thing on AWS IoT
 
