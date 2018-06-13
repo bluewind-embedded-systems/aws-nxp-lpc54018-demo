@@ -168,7 +168,7 @@ Click on the **JSON Editor** located at the left menu. Then delete the default J
 The JSON file is the translation of what you can manually add using the user-interface menu on the left.
 Notice that there is now a **LEDIntent** on your Intent’s list, and the invocation name is set to “myhome”. You can manually add or delete Intents for your application using the Graphical Interface or write it on the JSON Editor.
 
-![:scale 350px](assets/alexaJSON.png)
+![:scale 400px](assets/alexaJSON.PNG)
 
 In this JSON we list the intents we will be able to call by saying some predefined expressions **Sample Utterances**.
 The intents starting with *AMAZON...* are default intents for the Alexa Skill, which allow the Alexa Service to perform default actions (like stopping, entering the user help or others..).
